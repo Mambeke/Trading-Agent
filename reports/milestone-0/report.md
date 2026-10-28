@@ -1,12 +1,12 @@
 # Milestone 0: Project discovery and controlled setup
 
-**Status:** Discovery and planning prepared; GitHub recording and review are in progress. The owner explicitly authorised the initial commit to `main`.
+**Status:** Discovery and planning are ready for review. Reports were pushed to a dedicated branch; pull-request creation is blocked by token permissions. The owner explicitly authorised the initial commit to `main`.
 
 ## A. Executive summary
 
 Milestone 0 was intended to inspect the project and environment, determine whether to use an existing repository or create a new one, and propose a controlled architecture and implementation plan. The owner identified `https://github.com/Mambeke/Trading-Agent`. It is publicly readable and exists, but has no branches, commits or project files. Reuse this designated repository; there is no need to create another one. There is no existing implementation to assess.
 
-After the owner explicitly authorised the first commit, the repository was initialised on `main` with a minimal `README.md` in commit `fa65517050084bac3c1416268e295d6fc661094f`. A local milestone branch was then based on `main`; this report and its PDF companion document discovery. An authenticated GitHub API check reported push permission. Pull request status and report-commit evidence are documented in section I.
+After the owner explicitly authorised the first commit, the repository was initialised on `main` with a minimal `README.md` in commit `fa65517050084bac3c1416268e295d6fc661094f`. A local milestone branch was then based on `main`; this report and its PDF companion document discovery. An authenticated GitHub API check reported push permission, and the milestone branch was pushed successfully. The pull-request creation request failed with HTTP 403: `Resource not accessible by personal access token`. Pull request status and report-commit evidence are documented in section I.
 
 The owner wants a hosted development site, potentially on Cloudflare, rather than an in-chat preview. This is a hosting preference, not permission to implement the trading system, deploy a release or enable live trading. No broker was contacted and no orders were submitted.
 
@@ -82,9 +82,13 @@ Only the local report directory has been created. Before a significant dependenc
 | Authenticated GitHub API checks (`/user` and repository metadata) | Both HTTP 200; repository metadata reported `push: true` and `admin: true`. |
 | GitHub contents API initial `README.md` commit on `main` | HTTP 201; commit `fa65517050084bac3c1416268e295d6fc661094f`. The owner explicitly authorised this initial commit. |
 | `git fetch origin main`; `git switch -C milestone-0/discovery origin/main` | Fetch succeeded and local milestone branch was based on the new `main` commit. |
+| `git push -u origin milestone-0/discovery` using an in-process credential | Exit 0; the milestone branch was created on GitHub. |
+| Authenticated GitHub pull-request creation API request | Failed: HTTP 403 `Resource not accessible by personal access token`. No pull request was created. |
+| Python PDF generation, structural/source-line checks and `file` | PDF created; checks passed and `file` identified a PDF document. No independent visual rendering test was available. |
+| Report token-prefix scan with `grep -ainE` | No matching GitHub token prefixes were found in the two report files. |
 | Git author configuration check | Git name and/or email were not configured; values were not printed. |
 
-The PDF is generated locally with Python's standard library; its structure and source-line coverage are checked during generation. No independent visual rendering test is available. No application test suite exists or was run. Authenticated GitHub API checks and the initial `main` commit were performed. No Cloudflare request, external market-data request or broker request was made. See section I for milestone branch and pull-request status.
+The PDF is generated locally with Python's standard library; its structure and source-line coverage are checked during generation. No independent visual rendering test is available. No application test suite exists or was run. Authenticated GitHub API checks and the initial `main` commit were performed. The milestone branch push succeeded; creating a pull request failed with HTTP 403. No Cloudflare request, external market-data request or broker request was made. See section I for the GitHub evidence.
 
 ## E. Safety and security review
 
@@ -96,12 +100,12 @@ The PDF is generated locally with Python's standard library; its structure and s
 ## F. Outstanding issues and decisions
 
 1. **Repository review:** The initial `main` commit was explicitly authorised. The report branch and pull request still require review; see section I.
-2. **Git access and identity:** Authenticated repository metadata reported push permission. Pull-request creation permission must be verified by an actual attempt. Local report commits use the clearly labelled service identity `Arena.ai Agent <agent@localhost>` rather than attributing work to a human.
+2. **Git access and identity:** Authenticated repository metadata reported push permission. The pull-request creation attempt failed with HTTP 403 `Resource not accessible by personal access token`; the token needs suitable pull-request permissions or a person with access can open the PR. Local report commits use the clearly labelled service identity `Arena.ai Agent <agent@localhost>` rather than attributing work to a human.
 3. **Hosted development environment:** Confirm the Cloudflare account and ownership, acceptable development URL, access restrictions and deployment approval. Cloudflare access was not verified. Do not treat a hosted interface as authorisation for live orders.
 4. **Application requirements:** Clarify the desired initial interface and separately approve any implementation milestone. Instruments, jurisdiction, strategy, data provider, broker and operational constraints remain undecided.
 5. **Safety specification:** Define stale-data thresholds, account-state checks, reconciliation, fail-closed behaviour, risk limits, audit retention and emergency controls before execution work.
 6. **Engineering decisions:** Language, dependencies, persistence, deployment setup, tests and AI role remain undecided. The repository had no baseline implementation or CI to evaluate before initialisation.
-7. **GitHub evidence:** Branch protections and CI remain unverified. See section I for report-branch and pull-request evidence.
+7. **GitHub evidence:** The milestone branch push succeeded, but PR creation failed with HTTP 403. Branch protections and CI remain unverified. See section I for report-branch evidence.
 
 ## G. Scope review
 
@@ -109,27 +113,28 @@ No full trading system, integration, dependency, broker connection, order execut
 
 ## H. Recommended next step
 
-Complete the Milestone 0 GitHub record and request review, subject to permissions. Clarify the hosted development-site requirements before proposing a later implementation milestone. Do not begin Milestone 1 without a separate approved instruction.
+Request review of the pushed milestone branch. An authorised repository user can open a pull request, or the token permissions can be adjusted using a secure process. Clarify hosted development-site requirements before proposing a later implementation milestone. Do not begin Milestone 1 without a separate approved instruction.
 
 ## I. Review request for ChatGPT
 
-- **Milestone:** 0; discovery and proposed plan prepared; GitHub recording and review in progress.
-- **Milestone branch:** `milestone-0/discovery`, based on `main` commit `fa65517050084bac3c1416268e295d6fc661094f`.
-- **Commit identifier:** Initial `main` commit is `fa65517050084bac3c1416268e295d6fc661094f`. For the latest report commit, inspect the branch history; embedding a report's own commit hash in that same commit is self-referential.
-- **Pull request:** To be created after the report branch is pushed; consult the repository pull-request list for the current status.
+- **Milestone:** 0; discovery and proposed plan ready for review. The milestone branch was pushed; pull-request creation is blocked by token permissions.
+- **Milestone branch:** `milestone-0/discovery`, pushed to GitHub and based on `main` commit `fa65517050084bac3c1416268e295d6fc661094f`.
+- **Commit identifiers:** Initial `main` commit `fa65517050084bac3c1416268e295d6fc661094f`; initial milestone report commit `667a5dacf6b1a2d1254ffc5defa28fde8c316415`. This report was subsequently updated; inspect the branch history for its latest commit because embedding a report's own commit hash in that same commit is self-referential.
+- **Pull request:** None. The creation API returned HTTP 403 `Resource not accessible by personal access token`. An authorised user may open one at `https://github.com/Mambeke/Trading-Agent/pull/new/milestone-0/discovery`.
 - **Changed paths:** `README.md` (initial commit on `main`); `reports/milestone-0/report.md`; `reports/milestone-0/report.pdf` (milestone branch).
 - **Tests:** Environment, connector, GitHub public and authenticated API, Git reference, clone and local branch checks listed in section D. No application or broker tests.
-- **Known defects / questions:** There is no application to assess. The Cloudflare deployment method, application and safety requirements remain open as detailed in section F.
+- **Known defects / questions:** There is no application to assess. Pull-request creation was blocked by token permissions. The Cloudflare deployment method, application and safety requirements remain open as detailed in section F.
 - **Acceptance checklist:**
   - [x] Inspect the available workspace, tools and designated repository.
   - [x] Determine whether to reuse an existing repository or create a new one: reuse the designated empty repository.
   - [x] Document a provisional architecture, implementation plan, proposed structure and unresolved decisions.
   - [x] Create local Markdown and PDF reports with the substantive findings.
   - [x] Avoid implementing trading, accessing a broker or submitting orders.
-  - [ ] Record the milestone in GitHub on a dedicated branch and prepare a pull request when possible: in progress at report drafting.
+  - [x] Commit the reports on a dedicated branch and push it to GitHub.
+  - [ ] Create a pull request when permissions allow: attempted but blocked by HTTP 403.
 - **Review questions:** Is the proposed signal/risk/execution separation appropriate? What safety criteria should precede simulated execution? Does the hosted-development plan avoid prematurely choosing infrastructure? Is the minimal owner-authorised initial `main` commit appropriate?
 - **Next milestone:** Not authorised. Finish the Milestone 0 review cycle and clarify the hosted-environment requirements first.
 
 ## J. Plain-English explanation for the owner
 
-Your GitHub repository was empty, so with your explicit permission we made its first commit on `main`, containing a minimal README. We prepared the planning reports on a separate milestone branch. You want the eventual application on a hosted site such as Cloudflare; that can be planned after this setup is reviewed, without enabling real trading. No broker was contacted and no trading occurred. Review the report and GitHub evidence before approving further work.
+Your GitHub repository was empty, so with your explicit permission we made its first commit on `main`, containing a minimal README. We committed and pushed the planning reports on a separate milestone branch. Creating a pull request was blocked by token permissions; someone with the right GitHub permissions can open it. You want the eventual application on a hosted site such as Cloudflare; that can be planned after this setup is reviewed, without enabling real trading. No broker was contacted and no trading occurred. Review the report and GitHub evidence before approving further work.
