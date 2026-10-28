@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Non-executing development dashboard for the Trading Agent project.">
+  <title>Trading Agent · Development Dashboard</title>
+  <style>
+    :root { color-scheme: dark; --bg:#08111f; --panel:#101d30; --line:#26364d; --text:#edf3fb; --muted:#9aaec6; --blue:#62a7ff; --green:#56d6a0; --red:#ff8b8b; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(ellipse at top right,#142a49 0,transparent 42%),var(--bg); color:var(--text); }
+    .wrap { width:min(1100px,calc(100% - 32px)); margin:0 auto; padding:32px 0 56px; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:750; font-size:1.12rem; letter-spacing:.01em; }
+    .mark { display:grid; place-items:center; width:42px; height:42px; border-radius:13px; background:#18365d; color:#8ec2ff; font-weight:800; }
+    .pill { display:inline-flex; align-items:center; gap:8px; padding:7px 11px; border:1px solid #3b6b5d; border-radius:999px; color:#a7f1d0; background:#102b27; font-size:.82rem; font-weight:650; }
+    .dot { width:7px; height:7px; background:var(--green); border-radius:50%; }
+    h1 { margin:0; font-size:clamp(2rem,5vw,3.1rem); letter-spacing:-.045em; line-height:1.1; }
+    .intro { max-width:680px; color:var(--muted); margin:14px 0 26px; }
+    .warning { display:flex; gap:12px; align-items:flex-start; padding:15px 17px; border:1px solid #725b2c; border-radius:14px; background:#2b2415; color:#f5dda1; margin-bottom:22px; }
+    .warning strong { display:block; margin-bottom:2px; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .card { background:linear-gradient(145deg,rgba(22,39,62,.96),rgba(13,26,43,.96)); border:1px solid var(--line); border-radius:17px; padding:20px; min-width:0; }
+    .label { color:var(--muted); font-size:.86rem; }
+    .value { font-size:1.35rem; font-weight:720; margin-top:6px; overflow-wrap:anywhere; }
+    .sub { color:var(--muted); font-size:.82rem; margin-top:6px; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:12px; margin:30px 0 13px; }
+    h2 { margin:0; font-size:1.2rem; letter-spacing:-.02em; }
+    .section-head p { color:var(--muted); margin:4px 0 0; font-size:.86rem; }
+    .table { padding:0; overflow:hidden; }
+    .row { display:grid; grid-template-columns:1.3fr 1fr 1fr; align-items:center; gap:10px; padding:15px 20px; border-top:1px solid var(--line); }
+    .row:first-child { border-top:0; }
+    .row.heading { color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; }
+    .symbol { font-weight:700; }
+    .num { font-variant-numeric:tabular-nums; }
+    .positive { color:var(--green); } .negative { color:var(--red); }
+    .bottom { display:grid; grid-template-columns:1.1fr 1fr; gap:16px; margin-top:16px; }
+    ul { padding-left:19px; margin:12px 0 0; color:var(--muted); }
+    li+li { margin-top:7px; }
+    code { color:#b7d7ff; background:#0b1728; padding:2px 5px; border-radius:5px; }
+    footer { margin-top:28px; color:#7f94ad; font-size:.8rem; }
+    @media(max-width:760px) { .grid { grid-template-columns:1fr; } .bottom { grid-template-columns:1fr; } header { align-items:flex-start; flex-direction:column; } }
+    @media(max-width:420px) { .wrap { width:calc(100% - 22px); padding-top:22px; } .row { padding:13px 12px; grid-template-columns:1fr 1fr 1fr; gap:6px; font-size:.9rem; } .card { padding:16px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="brand"><div class="mark">TA</div><span>Trading Agent <span style="color:#8198b5;font-weight:500">/ Lab</span></span></div>
+      <div class="pill"><span class="dot"></span> Application running</div>
+    </header>
+    <h1>Development dashboard</h1>
+    <p class="intro">The first runnable foundation of the project. This page is intentionally a monitoring shell: it does not make trading decisions, connect to a broker, or place orders.</p>
+    <div class="warning"><span aria-hidden="true">⚠</span><div><strong>Demo environment — not for trading</strong>All displayed prices are fictional examples for interface testing. They are not current quotes and must not be used to make trading decisions.</div></div>
+
+    <section class="grid" aria-label="System summary">
+      <article class="card"><div class="label">Operating mode</div><div class="value">Demo only</div><div class="sub">Sample values, no external data</div></article>
+      <article class="card"><div class="label">Broker connection</div><div class="value">Not connected</div><div class="sub">No credentials configured or required</div></article>
+      <article class="card"><div class="label">Order execution</div><div class="value" style="color:var(--green)">Disabled</div><div class="sub">No order-execution code exists</div></article>
+    </section>
+
+    <div class="section-head"><div><h2>Sample market watch</h2><p>Fictional static values · for layout and API testing only</p></div></div>
+    <section class="card table" aria-label="Sample market data">
+      <div class="row heading"><span>Instrument</span><span>Sample price</span><span>Sample change</span></div>
+      <div class="row"><span class="symbol">EUR/USD</span><span class="num">1.0842</span><span class="num positive">+0.24%</span></div>
+      <div class="row"><span class="symbol">GBP/USD</span><span class="num">1.2718</span><span class="num negative">−0.11%</span></div>
+      <div class="row"><span class="symbol">USD/JPY</span><span class="num">149.32</span><span class="num positive">+0.08%</span></div>
+    </section>
+
+    <section class="bottom">
+      <article class="card"><h2>Foundation status</h2><ul><li>Python standard library only</li><li>JSON status and sample-data endpoints</li><li>Health endpoint for future hosting checks</li><li>Automated tests included in the repository</li></ul></article>
+      <article class="card"><h2>Local API endpoints</h2><ul><li><code>/health</code> — service health</li><li><code>/api/status</code> — mode and safety status</li><li><code>/api/market-data</code> — labelled sample values</li></ul></article>
+    </section>
+    <footer>Trading Agent development foundation · No financial advice · No live market feed · No broker integration · No order execution</footer>
+  </main>
+</body>
+</html>
