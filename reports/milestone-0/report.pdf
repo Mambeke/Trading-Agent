@@ -1,0 +1,357 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 5 /Kids [ 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R ] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Length 4015 >>
+stream
+BT
+42 800 Td
+13.6 TL
+/F2 10 Tf (Milestone 0: Project discovery and controlled setup) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (Status: Discovery and planning prepared; GitHub recording and review are in progress. The owner) Tj T*
+/F1 9 Tf (explicitly authorised the initial commit to main.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (A. Executive summary) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (Milestone 0 was intended to inspect the project and environment, determine whether to use an) Tj T*
+/F1 9 Tf (existing repository or create a new one, and propose a controlled architecture and) Tj T*
+/F1 9 Tf (implementation plan. The owner identified https://github.com/Mambeke/Trading-Agent. It is) Tj T*
+/F1 9 Tf (publicly readable and exists, but has no branches, commits or project files. Reuse this) Tj T*
+/F1 9 Tf (designated repository; there is no need to create another one. There is no existing) Tj T*
+/F1 9 Tf (implementation to assess.) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (After the owner explicitly authorised the first commit, the repository was initialised on main) Tj T*
+/F1 9 Tf (with a minimal README.md in commit fa65517050084bac3c1416268e295d6fc661094f. A local milestone) Tj T*
+/F1 9 Tf (branch was then based on main; this report and its PDF companion document discovery. An) Tj T*
+/F1 9 Tf (authenticated GitHub API check reported push permission. Pull request status and report-commit) Tj T*
+/F1 9 Tf (evidence are documented in section I.) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (The owner wants a hosted development site, potentially on Cloudflare, rather than an in-chat) Tj T*
+/F1 9 Tf (preview. This is a hosting preference, not permission to implement the trading system, deploy a) Tj T*
+/F1 9 Tf (release or enable live trading. No broker was contacted and no orders were submitted.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (B. Work completed) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (- Inspected the workspace and selected development and report-generation tools.) Tj T*
+/F1 9 Tf (- Checked the designated public GitHub repository, remote references, branch list, contents and) Tj T*
+/F1 9 Tf (commits, then cloned it locally.) Tj T*
+/F1 9 Tf (- Created the local branch milestone-0/discovery and, after the initial main commit, based it on) Tj T*
+/F1 9 Tf (origin/main.) Tj T*
+/F1 9 Tf (- With explicit owner authorisation, initialised main with a minimal README.md using GitHub) Tj T*
+/F1 9 Tf (commit fa65517050084bac3c1416268e295d6fc661094f. Prepared the proposed architecture,) Tj T*
+/F1 9 Tf (implementation plan, repository structure, unresolved decisions and acceptance checklist in this) Tj T*
+/F1 9 Tf (report and its PDF companion.) Tj T*
+/F1 9 Tf (- Changed paths: initial README.md on main; reports/milestone-0/report.md and) Tj T*
+/F1 9 Tf (reports/milestone-0/report.pdf on the milestone branch. No trading application files existed or) Tj T*
+/F1 9 Tf (were modified.) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (The PDF is derived from the Markdown primary source. Earlier local draft reports outside the) Tj T*
+/F1 9 Tf (clone are superseded by the copies in the clone.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (C. Technical explanation) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (Proposed architecture \(subject to approval\)) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (- Input boundaries: Separate market and, if later authorised, account-state adapters. Timestamp) Tj T*
+/F1 9 Tf (and validate inputs, and explicitly handle stale data and provider failures. No data provider is) Tj T*
+/F1 9 Tf (selected.) Tj T*
+/F1 9 Tf (- Research and signals: Strategies and any separately approved AI analysis produce proposals,) Tj T*
+/F1 9 Tf (not broker orders. AI has no direct execution privileges or route around deterministic risk) Tj T*
+/F1 9 Tf (controls.) Tj T*
+/F1 9 Tf (- Deterministic risk gateway: Every proposed order must pass a mandatory policy boundary.) Tj T*
+/F1 9 Tf (Unknown account state, stale data, failed reconciliation and broker failures should cause safe) Tj T*
+ET
+BT
+/F1 8 Tf
+42 31 Td
+(Milestone 0 report - page 1 of 5) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 3971 >>
+stream
+BT
+42 800 Td
+13.6 TL
+/F1 9 Tf (refusal or halt. Exact limits and operational behaviour require later specification and tests.) Tj T*
+/F1 9 Tf (- Execution boundary: Default to a non-executing mode. Any later simulated or broker adapter) Tj T*
+/F1 9 Tf (must be accessible only through the gateway. Live permissions, live orders, autonomous execution) Tj T*
+/F1 9 Tf (and production risk changes require explicit authorisation.) Tj T*
+/F1 9 Tf (- Reconciliation and audit: If execution is later approved, reconcile broker state and record) Tj T*
+/F1 9 Tf (decisions and errors without exposing secrets or sensitive account information. Storage and) Tj T*
+/F1 9 Tf (retention remain open decisions.) Tj T*
+/F1 9 Tf (- Configuration and secrets: Validate configuration, keep credentials outside Git and minimise) Tj T*
+/F1 9 Tf (privileges. The shared GitHub token was not placed in these files or in Git configuration.) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (These are design intentions, not implemented or verified controls.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (Proposed implementation plan) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (1. Record this milestone on its own branch and prepare a pull request against the newly) Tj T*
+/F1 9 Tf (initialised main, subject to access and review.) Tj T*
+/F1 9 Tf (2. After a separate approved instruction, establish the smallest non-executing foundation needed) Tj T*
+/F1 9 Tf (for the agreed first implementation milestone, with tests.) Tj T*
+/F1 9 Tf (3. In separately approved milestones, specify and test data validation, strategy proposals,) Tj T*
+/F1 9 Tf (deterministic risk controls and simulated execution/reconciliation. Clearly label simulated) Tj T*
+/F1 9 Tf (evidence.) Tj T*
+/F1 9 Tf (4. Consider broker integration, paper trading or live trading only with separate authorisation) Tj T*
+/F1 9 Tf (and appropriate safety, operational and security review.) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (For the owner's desired hosted development site, evaluate a minimal Cloudflare deployment path) Tj T*
+/F1 9 Tf (once an approved application and deployment scope exist. A public development site is not a live) Tj T*
+/F1 9 Tf (trading system. Convex is not assumed necessary. No deployment has been performed, and no) Tj T*
+/F1 9 Tf (language, framework, database, broker or significant dependency has been selected.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (Proposed repository structure) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (Illustrative only; structure must follow approved milestones:) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (README.md                  # purpose, setup and safety defaults) Tj T*
+/F1 9 Tf (src/                       # implementation, organised only as needed) Tj T*
+/F1 9 Tf (  data/                    # market/account input boundaries) Tj T*
+/F1 9 Tf (  strategy/                # signal proposals) Tj T*
+/F1 9 Tf (  risk/                    # deterministic risk gateway) Tj T*
+/F1 9 Tf (  execution/               # non-executing boundary and future adapters) Tj T*
+/F1 9 Tf (  reconciliation/          # state checks, if required) Tj T*
+/F1 9 Tf (tests/                     # unit and integration tests) Tj T*
+/F1 9 Tf (docs/                      # architecture, decisions and operations) Tj T*
+/F1 9 Tf (reports/milestone-N/       # report.md and report.pdf) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (Only the local report directory has been created. Before a significant dependency or) Tj T*
+/F1 9 Tf (architecture change, document its purpose, why the current approach is insufficient, its) Tj T*
+/F1 9 Tf (complexity, cost and failure risks, and simpler alternatives.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (D. Tests and evidence) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (| Command or action | Actual result |) Tj T*
+/F1 9 Tf (| --- | --- |) Tj T*
+/F1 9 Tf (| pwd; ls -la /home/user \(initial discovery\) | /home/user initially contained no project) Tj T*
+/F1 9 Tf (entries. |) Tj T*
+ET
+BT
+/F1 8 Tf
+42 31 Td
+(Milestone 0 report - page 2 of 5) Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 4666 >>
+stream
+BT
+42 800 Td
+13.6 TL
+/F1 9 Tf (| find /home/user -maxdepth 4 \\\( -name .git -o -name .gitmodules \\\) -print \(initial discovery\) |) Tj T*
+/F1 9 Tf (No matches. This was a depth-limited workspace search, not a search of external repositories. |) Tj T*
+/F1 9 Tf (| git -C /home/user rev-parse --is-inside-work-tree | Failed: fatal: not a git repository \(or) Tj T*
+/F1 9 Tf (any of the parent directories\): .git. |) Tj T*
+/F1 9 Tf (| git --version; python3 --version | Git 2.47.3; Python 3.13.16. |) Tj T*
+/F1 9 Tf (| Tool and module availability checks | Git and Python available. No pandoc, LibreOffice, LaTeX) Tj T*
+/F1 9 Tf (engines, wkhtmltopdf, Chromium, Ghostscript, pdftotext or pdfinfo found. reportlab, weasyprint,) Tj T*
+/F1 9 Tf (fpdf, pypdf, PyPDF2, fitz and markdown modules absent; PIL present. |) Tj T*
+/F1 9 Tf (| GitHub connector lookup | Returned unsupported; this does not establish whether Git CLI) Tj T*
+/F1 9 Tf (authentication would work. |) Tj T*
+/F1 9 Tf (| Cloudflare connector lookup | Returned unsupported; no Cloudflare account or deployment access) Tj T*
+/F1 9 Tf (was checked. |) Tj T*
+/F1 9 Tf (| Unauthenticated GitHub repository API request | HTTP 200; Mambeke/Trading-Agent, public, not) Tj T*
+/F1 9 Tf (archived, advertised default branch main, repository size 0. |) Tj T*
+/F1 9 Tf (| Unauthenticated GitHub branches API | HTTP 200 with an empty list. |) Tj T*
+/F1 9 Tf (| Unauthenticated GitHub contents API | HTTP 404, message This repository is empty. |) Tj T*
+/F1 9 Tf (| Unauthenticated GitHub commits API | HTTP 409, message Git Repository is empty. |) Tj T*
+/F1 9 Tf (| GIT_TERMINAL_PROMPT=0 git ls-remote https://github.com/Mambeke/Trading-Agent.git | Exit 0, no) Tj T*
+/F1 9 Tf (remote references. |) Tj T*
+/F1 9 Tf (| GIT_TERMINAL_PROMPT=0 git clone --no-checkout https://github.com/Mambeke/Trading-Agent.git) Tj T*
+/F1 9 Tf (/home/user/Trading-Agent | Clone succeeded with warning You appear to have cloned an empty) Tj T*
+/F1 9 Tf (repository. |) Tj T*
+/F1 9 Tf (| git switch --orphan milestone-0/discovery in the clone | Initially switched to a local orphan) Tj T*
+/F1 9 Tf (branch while the remote had no commits. |) Tj T*
+/F1 9 Tf (| Authenticated GitHub API checks \(/user and repository metadata\) | Both HTTP 200; repository) Tj T*
+/F1 9 Tf (metadata reported push: true and admin: true. |) Tj T*
+/F1 9 Tf (| GitHub contents API initial README.md commit on main | HTTP 201; commit) Tj T*
+/F1 9 Tf (fa65517050084bac3c1416268e295d6fc661094f. The owner explicitly authorised this initial commit. |) Tj T*
+/F1 9 Tf (| git fetch origin main; git switch -C milestone-0/discovery origin/main | Fetch succeeded and) Tj T*
+/F1 9 Tf (local milestone branch was based on the new main commit. |) Tj T*
+/F1 9 Tf (| Git author configuration check | Git name and/or email were not configured; values were not) Tj T*
+/F1 9 Tf (printed. |) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (The PDF is generated locally with Python's standard library; its structure and source-line) Tj T*
+/F1 9 Tf (coverage are checked during generation. No independent visual rendering test is available. No) Tj T*
+/F1 9 Tf (application test suite exists or was run. Authenticated GitHub API checks and the initial main) Tj T*
+/F1 9 Tf (commit were performed. No Cloudflare request, external market-data request or broker request was) Tj T*
+/F1 9 Tf (made. See section I for milestone branch and pull-request status.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (E. Safety and security review) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (- No broker credentials, broker access, account permissions, orders, risk limits or production) Tj T*
+/F1 9 Tf (settings were accessed or changed. No trading system exists in the inspected repository.) Tj T*
+/F1 9 Tf (- The owner supplied a GitHub token in conversation and requested that it not be saved to files.) Tj T*
+/F1 9 Tf (It was used for GitHub API authentication and was not placed in repository files or Git) Tj T*
+/F1 9 Tf (configuration. Because it was shared in conversation, it should be treated as exposed; rotation) Tj T*
+/F1 9 Tf (is recommended. Repository metadata reported push permission.) Tj T*
+/F1 9 Tf (- The proposed non-executing default and mandatory deterministic gateway are requirements, not) Tj T*
+/F1 9 Tf (verified functionality.) Tj T*
+/F1 9 Tf (- Cloudflare's connector lookup returned unsupported. A secure deployment method and ownership) Tj T*
+/F1 9 Tf (remain to be decided; no Cloudflare secrets should be included in source or reports.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (F. Outstanding issues and decisions) Tj T*
+/F1 9 Tf () Tj T*
+ET
+BT
+/F1 8 Tf
+42 31 Td
+(Milestone 0 report - page 3 of 5) Tj
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 4419 >>
+stream
+BT
+42 800 Td
+13.6 TL
+/F1 9 Tf (1. Repository review: The initial main commit was explicitly authorised. The report branch and) Tj T*
+/F1 9 Tf (pull request still require review; see section I.) Tj T*
+/F1 9 Tf (2. Git access and identity: Authenticated repository metadata reported push permission.) Tj T*
+/F1 9 Tf (Pull-request creation permission must be verified by an actual attempt. Local report commits use) Tj T*
+/F1 9 Tf (the clearly labelled service identity Arena.ai Agent <agent@localhost> rather than attributing) Tj T*
+/F1 9 Tf (work to a human.) Tj T*
+/F1 9 Tf (3. Hosted development environment: Confirm the Cloudflare account and ownership, acceptable) Tj T*
+/F1 9 Tf (development URL, access restrictions and deployment approval. Cloudflare access was not) Tj T*
+/F1 9 Tf (verified. Do not treat a hosted interface as authorisation for live orders.) Tj T*
+/F1 9 Tf (4. Application requirements: Clarify the desired initial interface and separately approve any) Tj T*
+/F1 9 Tf (implementation milestone. Instruments, jurisdiction, strategy, data provider, broker and) Tj T*
+/F1 9 Tf (operational constraints remain undecided.) Tj T*
+/F1 9 Tf (5. Safety specification: Define stale-data thresholds, account-state checks, reconciliation,) Tj T*
+/F1 9 Tf (fail-closed behaviour, risk limits, audit retention and emergency controls before execution) Tj T*
+/F1 9 Tf (work.) Tj T*
+/F1 9 Tf (6. Engineering decisions: Language, dependencies, persistence, deployment setup, tests and AI) Tj T*
+/F1 9 Tf (role remain undecided. The repository had no baseline implementation or CI to evaluate before) Tj T*
+/F1 9 Tf (initialisation.) Tj T*
+/F1 9 Tf (7. GitHub evidence: Branch protections and CI remain unverified. See section I for report-branch) Tj T*
+/F1 9 Tf (and pull-request evidence.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (G. Scope review) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (No full trading system, integration, dependency, broker connection, order execution or hosted) Tj T*
+/F1 9 Tf (deployment was added. The proposed architecture and structure are provisional. The local clone) Tj T*
+/F1 9 Tf (and milestone branch are controlled Milestone 0 setup; the reports are requested deliverables.) Tj T*
+/F1 9 Tf (The initial README.md commit on main was explicitly authorised by the owner. No known) Tj T*
+/F1 9 Tf (unauthorised additions beyond approved scope were made.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (H. Recommended next step) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (Complete the Milestone 0 GitHub record and request review, subject to permissions. Clarify the) Tj T*
+/F1 9 Tf (hosted development-site requirements before proposing a later implementation milestone. Do not) Tj T*
+/F1 9 Tf (begin Milestone 1 without a separate approved instruction.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (I. Review request for ChatGPT) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (- Milestone: 0; discovery and proposed plan prepared; GitHub recording and review in progress.) Tj T*
+/F1 9 Tf (- Milestone branch: milestone-0/discovery, based on main commit) Tj T*
+/F1 9 Tf (fa65517050084bac3c1416268e295d6fc661094f.) Tj T*
+/F1 9 Tf (- Commit identifier: Initial main commit is fa65517050084bac3c1416268e295d6fc661094f. For the) Tj T*
+/F1 9 Tf (latest report commit, inspect the branch history; embedding a report's own commit hash in that) Tj T*
+/F1 9 Tf (same commit is self-referential.) Tj T*
+/F1 9 Tf (- Pull request: To be created after the report branch is pushed; consult the repository) Tj T*
+/F1 9 Tf (pull-request list for the current status.) Tj T*
+/F1 9 Tf (- Changed paths: README.md \(initial commit on main\); reports/milestone-0/report.md;) Tj T*
+/F1 9 Tf (reports/milestone-0/report.pdf \(milestone branch\).) Tj T*
+/F1 9 Tf (- Tests: Environment, connector, GitHub public and authenticated API, Git reference, clone and) Tj T*
+/F1 9 Tf (local branch checks listed in section D. No application or broker tests.) Tj T*
+/F1 9 Tf (- Known defects / questions: There is no application to assess. The Cloudflare deployment) Tj T*
+/F1 9 Tf (method, application and safety requirements remain open as detailed in section F.) Tj T*
+/F1 9 Tf (- Acceptance checklist:) Tj T*
+/F1 9 Tf (  - [x] Inspect the available workspace, tools and designated repository.) Tj T*
+/F1 9 Tf (  - [x] Determine whether to reuse an existing repository or create a new one: reuse the) Tj T*
+ET
+BT
+/F1 8 Tf
+42 31 Td
+(Milestone 0 report - page 4 of 5) Tj
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 1770 >>
+stream
+BT
+42 800 Td
+13.6 TL
+/F1 9 Tf (designated empty repository.) Tj T*
+/F1 9 Tf (  - [x] Document a provisional architecture, implementation plan, proposed structure and) Tj T*
+/F1 9 Tf (unresolved decisions.) Tj T*
+/F1 9 Tf (  - [x] Create local Markdown and PDF reports with the substantive findings.) Tj T*
+/F1 9 Tf (  - [x] Avoid implementing trading, accessing a broker or submitting orders.) Tj T*
+/F1 9 Tf (  - [ ] Record the milestone in GitHub on a dedicated branch and prepare a pull request when) Tj T*
+/F1 9 Tf (possible: in progress at report drafting.) Tj T*
+/F1 9 Tf (- Review questions: Is the proposed signal/risk/execution separation appropriate? What safety) Tj T*
+/F1 9 Tf (criteria should precede simulated execution? Does the hosted-development plan avoid prematurely) Tj T*
+/F1 9 Tf (choosing infrastructure? Is the minimal owner-authorised initial main commit appropriate?) Tj T*
+/F1 9 Tf (- Next milestone: Not authorised. Finish the Milestone 0 review cycle and clarify the) Tj T*
+/F1 9 Tf (hosted-environment requirements first.) Tj T*
+/F1 9 Tf () Tj T*
+/F2 10 Tf (J. Plain-English explanation for the owner) Tj T*
+/F1 9 Tf () Tj T*
+/F1 9 Tf (Your GitHub repository was empty, so with your explicit permission we made its first commit on) Tj T*
+/F1 9 Tf (main, containing a minimal README. We prepared the planning reports on a separate milestone) Tj T*
+/F1 9 Tf (branch. You want the eventual application on a hosted site such as Cloudflare; that can be) Tj T*
+/F1 9 Tf (planned after this setup is reviewed, without enabling real trading. No broker was contacted and) Tj T*
+/F1 9 Tf (no trading occurred. Review the report and GitHub evidence before approving further work.) Tj T*
+ET
+BT
+/F1 8 Tf
+42 31 Td
+(Milestone 0 report - page 5 of 5) Tj
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 13 0 R >>
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000150 00000 n 
+0000000220 00000 n 
+0000000295 00000 n 
+0000004362 00000 n 
+0000004498 00000 n 
+0000008521 00000 n 
+0000008657 00000 n 
+0000013375 00000 n 
+0000013512 00000 n 
+0000017984 00000 n 
+0000018122 00000 n 
+0000019945 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+20083
+%%EOF
