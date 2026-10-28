@@ -14,7 +14,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent
 HOST = os.environ.get("TRADING_AGENT_HOST", "127.0.0.1")
-PORT = int(os.environ.get("TRADING_AGENT_PORT", "8000"))
+PORT = int(os.environ.get("PORT", os.environ.get("TRADING_AGENT_PORT", "8000")))
 
 
 def get_status() -> dict[str, Any]:
