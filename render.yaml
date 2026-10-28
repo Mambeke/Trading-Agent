@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: trading-agent-demo
+    runtime: python
+    plan: free
+    branch: milestone-1/foundation
+    buildCommand: "python -m compileall -q app.py tests"
+    startCommand: "python app.py"
+    healthCheckPath: /health
+    envVars:
+      - key: TRADING_AGENT_HOST
+        value: 0.0.0.0
